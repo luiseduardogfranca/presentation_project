@@ -24,6 +24,7 @@
         border-style: none !important;
         box-shadow: none !important;
         background-color: transparent !important;
+        box-shadow: -2px 5px 20px #333 !important;
       }
 
       .subtitle{
@@ -104,9 +105,14 @@
           <section>
             <h2 class="title-slide">Introdução</h2>
           </section>
-
+          
           <section>
-              <p>> Identificação da região nodular</p>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">Identificação da região nodular</h1>
+              <div class="blockquote">
+                </p>O que buscamos fazer aqui?</p>
+              </div>
+            </div>
           </section>
         </section>
 
@@ -148,35 +154,51 @@
           </section>
 
           <section>
-              <div class="box-blockquote fragment fade-up">
-                <h1 class="title-blockquote">Unet</h1>
-                <div class="blockquote blockquote-list">
-                  <ul>
-                    <li>Motivo 1</li>
-                    <li>Motivo 2</li>
-                  </ul>
-                </div>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">U-Net</h1>
+              <div class="blockquote">
+                <p>Tentamos uma abordagem com a <a href="https://arxiv.org/abs/1505.04597">U-Net</a>, porém ela tem uma estrutura desenvolvida para segmentação, sendo assim não compatível com o nosso objetivo que é encontrar um possível nódulo na imagem.</p>
               </div>
+              <figure style="text-align: center;">
+                <img class="style-image" src="./images/u-net.png" alt="U-Net" width="450">
+              </figure>
+            </div>
+          </section>
 
-              <div class="box-blockquote fragment fade-up">
-                <h1 class="title-blockquote">Passar imagem inteira para ambas</h1>
-                <div class="blockquote blockquote-list">
-                  <ul>
-                    <li>Motivo 1</li>
-                    <li>Motivo 2</li>
-                  </ul>
-                </div>
+          <section>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">CNN</h1>
+              <div class="blockquote">
+                <p>Utilizamos a <a href="https://skymind.ai/wiki/convolutional-network">CNN</a> e percebemos uma acurácia semelhante da que obtivemos com a U-Net, porém com um custo computacional menor devido a sua estrutura.</p>
               </div>
+              <figure style="text-align: center;">
+                <img class="style-image" src="./images/cnn.png" alt="CNN" width="600">
+              </figure>
+            </div>
+          </section>
 
-              <div class="box-blockquote fragment fade-up">
-                <h1 class="title-blockquote">Usar máscara binária como label</h1>
-                <div class="blockquote blockquote-list">
-                  <ul>
-                    <li>Motivo 1</li>
-                    <li>Motivo 2</li>
-                  </ul>
-                </div>
+          <section>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">Passar imagem inteira para ambas</h1>
+              <div class="blockquote">
+                <p>Nossa primeira tentativa tanto na Unet como na CNN foi passar a imagem inteira para a rede neural.</p>
               </div>
+              <figure style="text-align: center;">
+                <img class="style-image" src="./images/original.png" alt="Lung image" width="400">
+              </figure>
+            </div>
+          </section>
+
+          <section>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">Usar máscara binária como label</h1>
+              <div class="blockquote blockquote-list">
+                <ul>
+                  <li>Motivo 1</li>
+                  <li>Motivo 2</li>
+                </ul>
+              </div>
+            </div>
           </section>
 
           <section>
