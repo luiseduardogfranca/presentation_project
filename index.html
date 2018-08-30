@@ -9,7 +9,7 @@
       .title{
         text-align: justify;
       }
-
+  
       .title-slide{
         text-transform: none !important;
       }
@@ -26,9 +26,33 @@
         background-color: transparent !important;
       }
 
-      .blockquote{
+      .subtitle{
         padding-left: 15px !important;
         border-left: 2px black solid !important;
+      }
+      
+      .box-blockquote{
+        text-align: justify !important;
+        padding-left: 5% !important;
+        margin-bottom: 5% !important;
+      }
+
+      .title-blockquote{
+        font-size: 30pt !important;
+        text-transform: none !important;
+        color: rgba(0, 0, 0, 0.8) !important;
+      }
+
+      .blockquote{
+        padding-left: 2% !important; 
+        margin-left: 5%  !important; 
+        border-left: 1px rgba(0, 0, 0, 0.8) solid !important;
+        font-size: 20pt !important;
+        color: rgba(0, 0, 0, 0.6) !important;
+      }
+
+      .blockquote-list{
+        border-left: none !important;
       }
 
     </style>
@@ -42,7 +66,7 @@
         <section>
           <div class="title">
             <h1>Projeto</h1>
-             <div class="blockquote">
+             <div class="subtitle">
                <span >Diagnóstico de nódulos pulmonares com o uso de Deep Learning </span>
             </div>
           </div>
@@ -82,7 +106,7 @@
           </section>
 
           <section>
-              <h1>> Identificação da região nodular</h1>
+              <p>> Identificação da região nodular</p>
           </section>
         </section>
 
@@ -93,9 +117,27 @@
           </section>
 
           <section>
-              <p>>Python</p>
-              <p>>Tensorflow + Keras</p>
-              <p>>scikit-image</p>
+
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">Python</h1>
+              <div class="blockquote">
+                </p>Nós escolhemos a linguagem de programação Python</p>
+              </div>
+            </div>
+
+            <div class="box-blockquote fragment fade-up">
+                <h1 class="title-blockquote">Tensorflow + Keras</h1>
+                <div class="blockquote">
+                  </p>Nós escolhemos essas librarys porque...</p>
+                </div>
+             </div>
+
+             <div class="box-blockquote fragment fade-up">
+                <h1 class="title-blockquote">scikit-image</h1>
+                <div class="blockquote">
+                  </p>Nós utilizamos essa library para...</p>
+                </div>
+             </div>
           </section>
         </section>
 
@@ -106,24 +148,50 @@
           </section>
 
           <section>
-              <p> > UNet</p>
-              <p> > Passar imagem inteira para ambas</p>
-              <p> > Usar máscara binária como label</p>
+              <div class="box-blockquote fragment fade-up">
+                <h1 class="title-blockquote">Unet</h1>
+                <div class="blockquote blockquote-list">
+                  <ul>
+                    <li>Motivo 1</li>
+                    <li>Motivo 2</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="box-blockquote fragment fade-up">
+                <h1 class="title-blockquote">Passar imagem inteira para ambas</h1>
+                <div class="blockquote blockquote-list">
+                  <ul>
+                    <li>Motivo 1</li>
+                    <li>Motivo 2</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="box-blockquote fragment fade-up">
+                <h1 class="title-blockquote">Usar máscara binária como label</h1>
+                <div class="blockquote blockquote-list">
+                  <ul>
+                    <li>Motivo 1</li>
+                    <li>Motivo 2</li>
+                  </ul>
+                </div>
+              </div>
           </section>
 
           <section>
               <h5>Imagem Original</h5>
-              <img src="./img/image_3_original.png" alt="">
+              <img class="style-image" src="./img/image_3_original.png" alt="">
           </section>
 
           <section>
               <h5>Imagem com a segmentação do nódulo</h5>
-              <img src="./img/image_3_landmark.png" alt="">
+              <img class="style-image" src="./img/image_3_landmark.png" alt="">
           </section>
 
           <section>
               <h5>Máscara</h5>
-              <img src="./img/image_3_mask.png" alt="">
+              <img class="style-image" src="./img/image_3_mask.png" alt="">
           </section>
 
           <section>
@@ -131,8 +199,19 @@
           </section>
 
           <section>
-              <p>>Desbalanceamento</p>
-              <p>><i>Overfitting</i></p>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">Desbalanceamento</h1>
+              <div class="blockquote">
+                <P>O que foi esse desbalanceamento?</P>
+              </div>
+            </div>
+
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">Overfitting</h1>
+              <div class="blockquote">
+                <p>Por que existiu esse overfitting?</p>
+              </div>
+            </div>
           </section>
         </section>
 
