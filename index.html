@@ -52,6 +52,13 @@
         color: rgba(0, 0, 0, 0.6) !important;
       }
 
+      .blockquote-without-border{
+        padding-left: 2% !important; 
+        margin-left: 5%  !important; 
+        font-size: 20pt !important;
+        color: rgba(0, 0, 0, 0.6) !important;
+      }
+
       .blockquote-list{
         border-left: none !important;
       }
@@ -90,7 +97,7 @@
           <div class="title">
             <h1>Projeto</h1>
              <div class="subtitle">
-               <span >Diagnóstico de nódulos pulmonares com o uso de Deep Learning </span>
+               <span>Diagnóstico de nódulos pulmonares com o uso de Deep Learning </span>
             </div>
           </div>
         </section>
@@ -122,10 +129,10 @@
 
         </section>
 
-        <!-- introduction -->
+        <!-- goal -->
         <section>
           <section>
-            <h2 class="title-slide">Introdução</h2>
+            <h2 class="title-slide">Objetivo</h2>
           </section>
           
           <section>
@@ -138,228 +145,256 @@
           </section>
         </section>
 
-        <!-- tecnologies used -->
+
+        <!-- result part 1 -->
         <section>
           <section>
-            <h2 class="title-slide">Tecnologias utilizadas</h2>
+            <div class="title">
+              <h3>Resultados</h3>
+              <div class="subtitle">
+                <span>Anteriores a segmentação do parênquima</span>
+              </div>
+            </div>
+          </section>
+        
+          <section>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">A fatia inteira como entrada</h1>
+              <div class="blockquote-without-border">
+                <ul>
+                  <li></p>De início nós utilizamos como abordagem o uso da imagem inteira (512x512) como entrada da rede.</p></li>
+                  <li><p>Aplicamos os mesmos atributos de entrada tanto a CNN (Coonvulational Neural Network) como a U-net.</p></li>
+                </ul>
+              </div>
+            </div>
           </section>
 
           <section>
-
             <div class="box-blockquote fragment fade-up">
-              <h1 class="title-blockquote">Python</h1>
-              <div class="blockquote">
-                </p>Foi escolhido Python como linguagem de desenvolvimento devido a todo suporte oferecido por ela nos trabalhos feitos dentro de Machine Learning.</p>
+              <h1 class="title-blockquote">A criação de patches a partir das fatias</h1>
+              <div class="blockquote-without-border">
+                <ul>
+                  <li>
+                    </p>Buscamos trabalhar com patches, a divsão das fátias. Escolhemos os patches nas dimensões 16x16, 32x32 e 64x64;</p>
+                  </li>
+                  <li>
+                    <p>Com os mesmos dados tentamos aplicar a um treinamento com <strong>cross-validation</strong> e sem, buscando uma melhor acurácia;</p>
+                  </li>
+                  <li>
+                    <p>Em seguida buscamos aumentar a quantidade de imagens trabalhadas visando alcançar uma melhor acurácia, mas não conseguimos chegar a um bom resultado.</p>
+                  </li>
+                </ul>
               </div>
             </div>
-
-            <div class="box-blockquote fragment fade-up">
-                <h1 class="title-blockquote">Tensorflow + Keras</h1>
-                <div class="blockquote">
-                  </p>Utilizamos essas libraries por todo suporte oferecido na estruturação de redes neurais, bem como a possibilidade de acompanhamento de todo o processo em um trainamento por meios de log's.</p>
-                </div>
-             </div>
-
-             <div class="box-blockquote fragment fade-up">
-                <h1 class="title-blockquote">scikit-image</h1>
-                <div class="blockquote">
-                  </p>Essa library é de grande valia para ser utilizada em conjunto com técnicas de processamento de imagem na linguagem Python.</p>
-                </div>
-             </div>
           </section>
         </section>
 
-        <!-- aproacches and failures -->
+        <!-- result part 2-->
         <section>
           <section>
-            <h2 class="title-slide">Abordagens</h2>
+            <div class="title">
+              <h3>Resultados</h3>
+              <div class="subtitle">
+                <span>A segmentação do parênquima</span>
+              </div>
+            </div>
           </section>
-
+        
           <section>
             <div class="box-blockquote fragment fade-up">
-              <h1 class="title-blockquote">U-Net</h1>
+              <h1 class="title-blockquote">Segmentação do parênquima com técnicas de P.I.</h1>
               <div class="blockquote">
-                <p>Tentamos uma abordagem com a <a href="https://arxiv.org/abs/1505.04597">U-Net</a>, porém ela tem uma estrutura desenvolvida para segmentação. Sendo assim não compatível com o nosso objetivo, que é encontrar a região de um possível nódulo na imagem.</p>
+                <p>Buscamos aplicar técnicas de P.I. para o recorte do parênquima, porém devido a posição de algumas fátias o algorítimo se tornou ineficiente para todo o dataset.</p>
               </div>
+            </div>
+          </section>
+          <section>
+            <h1 class="title-blockquote">Segmentação do parênquima com técnicas de P.I.</h1>
+            <div>
               <figure style="text-align: center;">
-                <img class="style-image" src="./images/u-net.png" alt="U-Net" width="450">
+                <img class="style-image" src="./images/step-to-step.png" alt="Step to step" width="600">
               </figure>
             </div>
           </section>
 
           <section>
             <div class="box-blockquote fragment fade-up">
-              <h1 class="title-blockquote">CNN</h1>
-              <div class="blockquote">
-                <p>Utilizamos a <a href="https://skymind.ai/wiki/convolutional-network">CNN</a> e percebemos uma acurácia semelhante da que obtivemos com a U-Net, porém com um custo computacional menor devido a sua estrutura.</p>
+              <h1 class="title-blockquote">Segmentação do parênquima com CNN</h1>
+              <div class="blockquote-without-border">
+                <ul>
+                  <li><p>Criamos um dataset com os parênquimas segmentados de forma retangular, servindo como label para a rede neural;</p></li>
+                  <li><p>A CNN chegou a uma acurácia de 98,8% com 120 épocas de treinamento.</p></li>
+                </ul>
               </div>
+            </div>
+          </section>
+          <section>
+            <h1 class="title-blockquote">Segmentação do parênquima com CNN</h1>
+            <figure style="text-align: center;">
+              <img class="style-image" src="./images/result-parenchyma-2.png" alt="Segmentation with CNN" width="500">
+            </figure>
+          </section>
+
+          <section>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">Segmentação do parênquima com CNN</h1>
+              <div class="blockquote-without-border">
+                <ul>
+                  <li><p>Os parênquimas foram segmentados de forma mais precisa;</p></li>
+                  <li><p>A CNN chegou a uma acurácia de 99,5% de acurácia;</p></li>
+                  <li><p>A CNN chegou a uma acurácia de 95,9% de acurácia;</p></li>
+                  <li><p>Mudamos para o dataset <a href="https://luna16.grand-challenge.org/data/">LUNA16</a></p></li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section>
+            <div>
+              <h1 class="title-blockquote">Segmentação do parênquima com CNN</h1>              
               <figure style="text-align: center;">
-                <img class="style-image" src="./images/cnn.png" alt="CNN" width="600">
+                <img class="style-image" src="./images/result-parenchyma-3.png" alt="Segmentation with CNN" width="400">
+              </figure>
+            </div>
+          </section>
+
+        
+        </section>
+
+        <!-- result part 3 -->
+        <section>
+          <section>
+            <div class="title">
+              <h3>Resultados</h3>
+              <div class="subtitle">
+                <span>Após a segmentação do parênquima</span>
+              </div>
+            </div>
+          </section>
+        
+          <section>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">Patches com nódulos</h1>
+              <div class="blockquote-without-border">
+                <ul>
+                  <li><p>Diante do desbalanceamento, uma quantidade superior de patchs sem nódulos, decidimos utilizar apenas as fátias que
+                    possuem nódulo;</p></li>
+                  <li><p>Mesmo assim o desbalanceamento continua, então buscamos deixar uma proporção que não cause essa desigualdade;</p></li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">Data augmentation</h1>
+              <div class="blockquote-without-border">
+                <ul>
+                  <li>
+                    <p>Dentre todos os exames existe uma percela muito pequena de imagens que possuem nódulos;</p>
+                  </li>
+                  <li>
+                    <p>Buscamos aplicar <strong>data augmentation</strong> rotacionando as imagens para ter um aumento dos patchs com nódulos, conseguimos aumentar de 510 para 2020 patchs com nódulos;</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h1 class="title-blockquote">Data augmentation</h1>
+            <div>
+              <figure style="text-align: center;">
+                <img class="style-image" src="./images/result-data-augmentation.png" alt="Step to step" width="500">
               </figure>
             </div>
           </section>
 
           <section>
             <div class="box-blockquote fragment fade-up">
-              <h1 class="title-blockquote">Passando a imagem inteira para a rede</h1>
-              <div class="blockquote">
-                <p>Nossa primeira tentativa tanto na Unet como na CNN foi passar a imagem inteira para a rede neural como entrada.</p>
+              <h1 class="title-blockquote">Autoencoder</h1>
+              <div class="blockquote-without-border">
+                <ul>
+                  <li>
+                    <p>Diante do desbalanceamento, uma quantidade superior de patchs sem nódulos, decidimos utilizar apenas as
+                      fátias que
+                      possuem nódulo;</p>
+                  </li>
+                  <li>
+                    <p>Mesmo assim o desbalanceamento continua, então buscamos deixar uma proporção que não cause essa
+                      desigualdade;</p>
+                  </li>
+                </ul>
               </div>
+            </div>
+          </section>
+          <section>
+            <h1 class="title-blockquote">Autoencoder</h1>
+            <div>
               <figure style="text-align: center;">
-                <img class="style-image" src="./images/original.png" alt="Lung image" width="350">
+                <img class="style-image" src="./images/autoencoder.png" alt="Step to step" width="1000">
               </figure>
             </div>
           </section>
+        </section>
 
+        <!-- table -->
+        <section>
           <section>
-            <div class="box-blockquote fragment fade-up">
-              <h1 class="title-blockquote">Usar máscara binária como label</h1>
-              <div class="blockquote">
-                <p>
-                  Criado uma máscara a partir da imagem segmentada para servir como label para a rede neural.
-                </p>
-              </div>
-              <figure style="text-align: center;">
-                <img class="style-image" src="./images/image_landmark.png" alt="Lung image" width="300" height="300" >
-                <img class="style-image" src="./images/mask.png" alt="Lung image" width="300" height="300">
-              </figure>
-            </div>
-          </section>
-
-          <section>
-            <h2 class="title-slide">E falhas...</h2>
-          </section>
-
-          <section>
-            <div class="box-blockquote fragment fade-up">
-              <h1 class="title-blockquote">Desbalanceamento</h1>
-              <div class="blockquote">
-                <p>Maior quantidade de informações ficou concentrada nas regiões externas da imagem (escuras), tendo um desbalanceamento na distribuição de informações da imagem;</p>
-              </div>
-            </div>
-
-            <div class="box-blockquote fragment fade-up">
-              <h1 class="title-blockquote">Overfitting</h1>
-              <div class="blockquote">
-                <p>Devido ao desbalanceamento das imagens a rede acabou aprendendo muito sobre as informações de treino e ganhando deficiência na predição em outras imagens</p>
+            <div class="title">
+              <h3>Comparações</h3>
+              <div class="subtitle">
+                <span>Benchmark de todos os resultados</span>
               </div>
             </div>
           </section>
-
-          <!-- table -->
           <section>
             <div class="box-blockquote fragment fade-up">
               <h1 style="text-align: center; margin-bottom: 100px;" class="title-blockquote">Configurações da rede no treinamento</h1>
               <table class="table">
-                <thead> 
+                <thead>
                   <tr>
+                    <th>Approach</th>
+                    <th>Samples</th>
                     <th>Epochs</th>
-                    <th>Batch Size</th>
-                    <th>Learning Rate</th>
-                    <th>Feedback</th>
+                    <th>Validation accuracy</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>10</td>
-                    <td>3</td>
-                    <td>1e-4</td>
-                    <td>Com coordenadas únicas, se saiu mal</td>
-                  </tr>
-                  <tr>
-                    <td>10</td>
-                    <td>3</td>
-                    <td>1e-4</td>
-                    <td>Sem coordenadas únicas, se saiu mal</td>
-                  </tr>
-                  <tr>
-                    <td>10</td>
-                    <td>3</td>
-                    <td>1e-4</td>
-                    <td>Sem coordenadas únicas, se saiu mal</td>
-                  </tr>
-                  <tr>
-                    <td>10</td>
-                    <td>2</td>
-                    <td>1e-4</td>
-                    <td>Sem coordenadas únicas, se saiu mal</td>
-                  </tr>
-                  <tr>
-                    <td>10</td>
-                    <td>2</td>
-                    <td>1e-5</td>
-                    <td>Sem coordenadas únicas, se saiu mal</td>
-                  </tr>
-                  <tr>
-                    <td>10</td>
-                    <td>2</td>
-                    <td>1e-6</td>
-                    <td>Sem coordenadas únicas, demonstrou um leve sinal de aprendizado</td>
-                  </tr>
-                  <tr>
-                    <td>10</td>
-                    <td>1</td>
-                    <td>1e-4</td>
-                    <td>Sem coordenadas únicas, resultado insatisfatório</td>
-                  </tr>
-                  <tr>
+                    <td>(1º tentativa) U-net</td>
+                    <td>137</td>
                     <td>50</td>
-                    <td>2</td>
-                    <td>1e-6</td>
-                    <td>Sem coordenadas únicas, resultado insatisfatório</td>
+                    <td>99%</td>
+                  </tr>
+                  <tr>
+                    <td>(1º tentativa) CNN</td>
+                    <td>137</td>
+                    <td>10</td>
+                    <td>99%</td>
+                  </tr>
+                  <tbody>
+                  <tr>
+                    <td>CNN 32x32</td>
+                    <td>420</td>
+                    <td>300</td>
+                    <td>55,9%</td>
+                  </tr>
+                  <tr>
+                    <td>CNN 64x64</td>
+                    <td>602</td>
+                    <td>500</td>
+                    <td>68%</td>
+                  </tr>
+                  <tr>
+                    <td>(Somente imagens com nódulos e balanceado) CNN </td>
+                    <td>1020</td>
+                    <td>500</td>
+                    <td>80%</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </section>
         </section>
-
-        <!-- working in progress -->
-        <section>
-          <section>
-            <h2 class="title-slide">Trabalho em progresso</h2>
-          </section>
-          <section>
-            <div class="box-blockquote fragment fade-up">
-              <h1 class="title-blockquote">Processamento de imagem</h1>
-              <div class="blockquote">
-                <p>Selecionar a região mais próxima do pulmão com o auxílio da library <a href="https://scikit-image.org/">scikit-image</a> com objetivo de diminuir o desbalanceamento.</p>
-              </div>
-            </div>
-
-            <div class="box-blockquote fragment fade-up">
-              <h1 class="title-blockquote">Ténicas de processamento de imagem</h1>
-              <div class="blockquote blockquote-list">
-                <ul>
-                  <li>Filtro gaussiano;</li>
-                  <li>Detector de arestas;</li>
-                  <li>Detector morfológico;</li>
-                  <li>Regionprop;</li>
-                </ul>
-              </div>
-            </div>
-            
-          </section>
-
-          <section>
-            <div class="box-blockquote fragment fade-up">
-              <h1 class="title-blockquote">Resultado alcançado</h1>
-              <div class="blockquote">
-                <p>Com todas as técnicas aplicadas foi possível detectar as possíveis regiões próximas ao parênquima do pulmão.</p>
-              </div>
-              <figure style="text-align: center;">
-                <img class="style-image" src="./images/step-to-step.png" alt="Step to step" width="600">
-              </figure>
-            </div>
-          </section>
-        </section>
-
-        <!-- biography  -->
-        <!-- <section>
-            <section>
-                <h2 class="title-slide">Bibliografia</h2>
-            </section>
-        </section> -->
       </div>
     </div>
 
