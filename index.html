@@ -5,7 +5,14 @@
     <link rel="stylesheet" href="./revealjs/css/reveal.css">
     <link rel="stylesheet" href="./revealjs/css/theme/white.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./highlight/styles/atom-one-dark.css">
+    <script src="./highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <style media="screen">
+      pre{
+        box-shadow: none !important;
+        border: none !important;
+      }
       .title{
         text-align: justify;
       }
@@ -398,6 +405,145 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <div class="title">
+              <h3>Implementação</h3>
+              <div class="subtitle">
+                <span>Implementações com pseudocódigo</span>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">1º tentativa U-net</h1>
+              <div class="blockquote-without-border">
+                <pre>
+                  <code class="python" data-trim>
+#paramestros ajustaveis da rede 
+epoca = 50
+quant_amostras_por_epoca = 2
+funcao_perca = "binary_crossentropy"
+taxa_aprendizado = 1e-6
+
+#definicao do modelo da rede
+entrada = Image(512x512)
+
+camada_convolucao1 = Conv2D(entrada)
+camada_convolucao1 = Conv2D(camada_convolucao1)
+camada_pooling1 = MaxPooling2D(camada_convolucao1)
+
+camada_convolucao2 = Conv2D(camada_pooling1)
+camada_convolucao2 = Conv2D(camada_convolucao2)
+camada_pooling2 = MaxPooling2D(camada_convolucao2)
+
+camada_convolucao3 = Conv2D(camada_pooling2)
+camada_convolucao3 = Conv2D(camada_convolucao3)
+camada_pooling3 = MaxPooling2D(camada_convolucao3)
+
+camada_convolucao4 = Conv2D(camada_pooling3)
+camada_convolucao4 = Conv2D(camada_convolucao4)
+camada_desativa_neuronios4 = Dropout(camada_convolucao4, porcentagem = 0.5)
+camada_pooling4 = MaxPooling2D(camada_desativa_neuronios4)
+
+camada_convolucao5 = Conv2D(camada_pooling4)
+camada_convolucao5 = Conv2D(camada_convolucao5)
+camada_desativa_neuronios5 = Dropout(camada_convolucao5, porcentagem = 0.5)
+
+camada_subida6 = Conv2D(camada_desativa_neuronios5)
+camada_mesclagem6 = merge(camada_desativa_neuronios4, camada_subida6)
+camada_convolucao6 = Conv2D(camada_mesclagem6)
+camada_convolucao6 = Conv2D(camada_convolucao6)
+
+camada_subida7 = Conv2D(camada_convolucao6)
+camada_mesclagem7 = merge(camada_convolucao3, camada_subida7)
+camada_convolucao7 = Conv2D(camada_mesclagem7)
+camada_convolucao7 = Conv2D(camada_convolucao7)
+
+camada_subida8 = Conv2D(camada_convolucao7)
+camada_mesclagem8 = merge(camada_convolucao2, camada_subida8)
+camada_convolucao8 = Conv2D(camada_mesclagem8)
+camada_convolucao8 = Conv2D(camada_convolucao8)
+
+camada_subida9 = Conv2D(camada_convolucao8)
+camada_mesclagem9 = merge(camada_convolucao1, camada_subida9)
+camada_convolucao9 = Conv2D(camada_mesclagem9)
+camada_convolucao9 = Conv2D(camada_convolucao9)
+camada_convolucao9 = Conv2D(formato_entrada='2x3', camada_convolucao9)
+
+camada_convolucao10 = Conv2D(formato_entrada='1x1', camada_convolucao10)
+
+modelo = Model(input=entrada, output=camada_convolucao10)
+
+modelo.executar_treino(otimizador=taxa_aprendizado, perca=funcao_perca)
+                  </code>
+                </pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">1º tentativa CNN</h1>
+              <div class="blockquote-without-border">
+                <pre>
+                  <code class="python" data-trim>
+
+                  </code>
+                </pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">CNN 32x32 (abordagem de patches)</h1>
+              <div class="blockquote-without-border">
+                <pre>
+                  <code class="python" data-trim>
+
+                  </code>
+                </pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">CNN 64x64 (abordagem de patches)</h1>
+              <div class="blockquote-without-border">
+                <pre>
+                  <code class="python" data-trim>
+
+                  </code>
+                </pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">CNN patches com nódulos e sem 1:1</h1>
+              <div class="blockquote-without-border">
+                <pre>
+                  <code class="python" data-trim>
+
+                  </code>
+                </pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <div class="box-blockquote fragment fade-up">
+              <h1 class="title-blockquote">CNN patches com nódulos e sem 1:2</h1>
+              <div class="blockquote-without-border">
+                <pre>
+                  <code class="python" data-trim>
+
+                  </code>
+                </pre>
+              </div>
             </div>
           </section>
         </section>
