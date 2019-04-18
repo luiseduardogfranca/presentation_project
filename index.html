@@ -479,7 +479,6 @@ camada_convolucao9 = Conv2D(formato_entrada='2x3', camada_convolucao9)
 camada_convolucao10 = Conv2D(formato_entrada='1x1', camada_convolucao10)
 
 modelo = Model(input=entrada, output=camada_convolucao10)
-
 modelo.executar_treino(otimizador=taxa_aprendizado, perca=funcao_perca)
                   </code>
                 </pre>
@@ -492,7 +491,53 @@ modelo.executar_treino(otimizador=taxa_aprendizado, perca=funcao_perca)
               <div class="blockquote-without-border">
                 <pre>
                   <code class="python" data-trim>
+#paramestros ajustaveis da rede
+epoca = 10
+quant_amostras_por_epoca = 2
+funcao_perca = "binary_crossentropy"
+taxa_aprendizado = 1e-3
 
+#definicao do modelo da rede
+entrada = Image(512x512)
+
+camada_convolucao1 = Conv2D(entrada)
+camada_convolucao1 = Conv2D(camada_convolucao1)
+camada_pooling1 = MaxPooling2D(camada_convolucao1)
+
+camada_convolucao2 = Conv2D(camada_pooling1)
+camada_convolucao2 = Conv2D(camada_convolucao2)
+camada_pooling2 = MaxPooling2D(camada_convolucao2)
+
+camada_convolucao3 = Conv2D(camada_pooling2)
+camada_convolucao3 = Conv2D(camada_convolucao3)
+camada_pooling3 = MaxPooling2D(camada_convolucao3)
+
+camada_convolucao4 = Conv2D(camada_pooling3)
+camada_convolucao4 = Conv2D(camada_convolucao4)
+camada_desativa_neuronios4 = Dropout(camada_convolucao4, porcentagem = 0.5)
+camada_pooling4 = MaxPooling2D(camada_convolucao4)
+
+camada_convolucao5 = Conv2D(camada_pooling5)
+camada_convolucao5 = Conv2D(camada_convolucao5)
+camada_desativa_neuronios5 = Dropout(camada_convolucao5, porcentagem = 0.5)
+
+camada_convolucao6 = Conv2D(camada_desativa_neuronios5)
+camada_convolucao6 = Conv2D(camada_convolucao6)
+
+camada_convolucao7 = Conv2D(camada_convolucao6)
+camada_convolucao7 = Conv2D(camada_convolucao7)
+
+camada_convolucao8 = Conv2D(camada_convolucao7)
+camada_convolucao8 = Conv2D(camada_convolucao8)
+
+camada_convolucao9 = Conv2D(camada_convolucao8)
+camada_convolucao9 = Conv2D(camada_convolucao9)
+camada_convolucao9 = Conv2D(formato_entrada='2x3', camada_convolucao9)
+
+camada_convolucao10 = Conv2D(formato_entrada='1x1', camada_convolucao9)
+
+modelo = Model(input=entrada, output=camada_convolucao10)
+modelo.executar_treino(otimizador=taxa_aprendizado, perca=funcao_perca)
                   </code>
                 </pre>
               </div>
@@ -504,7 +549,39 @@ modelo.executar_treino(otimizador=taxa_aprendizado, perca=funcao_perca)
               <div class="blockquote-without-border">
                 <pre>
                   <code class="python" data-trim>
+#paramestros ajustaveis da rede
+epoca = 300
+quant_amostras_por_epoca = 3
+funcao_perca = "binary_crossentropy"
+taxa_aprendizado = 1e-4
 
+#definicao do modelo da rede
+entrada = Image(32x32)
+
+camada_convolucao1 = Conv2D(entrada)
+camada_convolucao1 = Conv2D(camada_convolucao1)
+camada_pooling1 = MaxPooling2D(camada_convolucao1)
+
+camada_convolucao2 = Conv2D(camada_pooling1)
+camada_convolucao2 = Conv2D(camada_convolucao2)
+camada_pooling2 = MaxPooling2D(camada_convolucao2)
+
+camada_convolucao3 = Conv2D(camada_pooling2)
+camada_convolucao3 = Conv2D(camada_convolucao3)
+camada_pooling3 = MaxPooling2D(camada_convolucao3)
+
+camada_convolucao4 = Conv2D(camada_pooling3)
+camada_convolucao4 = Conv2D(camada_convolucao4)
+camada_pooling4 = MaxPooling2D(camada_convolucao4)
+
+camada_planeada = Flatten(camada_pooling4)
+camada_desativa_neuronios1 = Dropout(camada_planeada, porcentagem = 0.5)
+
+camada_densa1 = Dense(camada_desativa_neuronios1)
+camada_densa1 = Dense(camada_densa1)
+
+modelo = Model(input=entrada, output=camada_densa1)
+modelo.executar_treino(otimizador=taxa_aprendizado, perca=funcao_perca)
                   </code>
                 </pre>
               </div>
@@ -516,7 +593,39 @@ modelo.executar_treino(otimizador=taxa_aprendizado, perca=funcao_perca)
               <div class="blockquote-without-border">
                 <pre>
                   <code class="python" data-trim>
+#paramestros ajustaveis da rede
+epoca = 300
+quant_amostras_por_epoca = 3
+funcao_perca = "binary_crossentropy"
+taxa_aprendizado = 1e-4
 
+#definicao do modelo da rede
+entrada = Image(64x64)
+
+camada_convolucao1 = Conv2D(entrada)
+camada_convolucao1 = Conv2D(camada_convolucao1)
+camada_pooling1 = MaxPooling2D(camada_convolucao1)
+
+camada_convolucao2 = Conv2D(camada_pooling1)
+camada_convolucao2 = Conv2D(camada_convolucao2)
+camada_pooling2 = MaxPooling2D(camada_convolucao2)
+
+camada_convolucao3 = Conv2D(camada_pooling2)
+camada_convolucao3 = Conv2D(camada_convolucao3)
+camada_pooling3 = MaxPooling2D(camada_convolucao3)
+
+camada_convolucao4 = Conv2D(camada_pooling3)
+camada_convolucao4 = Conv2D(camada_convolucao4)
+camada_pooling4 = MaxPooling2D(camada_convolucao4)
+
+camada_planeada = Flatten(camada_pooling4)
+camada_desativa_neuronios1 = Dropout(camada_planeada, porcentagem = 0.5)
+
+camada_densa1 = Dense(camada_desativa_neuronios1)
+camada_densa1 = Dense(camada_densa1)
+
+modelo = Model(input=entrada, output=camada_densa1)
+modelo.executar_treino(otimizador=taxa_aprendizado, perca=funcao_perca)
                   </code>
                 </pre>
               </div>
@@ -524,23 +633,51 @@ modelo.executar_treino(otimizador=taxa_aprendizado, perca=funcao_perca)
           </section>
           <section>
             <div class="box-blockquote fragment fade-up">
-              <h1 class="title-blockquote">CNN patches com nódulos e sem 1:1</h1>
+              <h1 class="title-blockquote">CNN com patches com melhor resultado</h1>
               <div class="blockquote-without-border">
                 <pre>
                   <code class="python" data-trim>
+#paramestros ajustaveis da rede
+epoca = 50
+quant_amostras_por_epoca = 5
+funcao_perca = "binary_crossentropy"
+taxa_aprendizado = 1e-6
 
-                  </code>
-                </pre>
-              </div>
-            </div>
-          </section>
-          <section>
-            <div class="box-blockquote fragment fade-up">
-              <h1 class="title-blockquote">CNN patches com nódulos e sem 1:2</h1>
-              <div class="blockquote-without-border">
-                <pre>
-                  <code class="python" data-trim>
+#definicao do modelo da rede
+entrada = Image(64x64)
 
+camada_convolucao1 = Conv2D(entrada)
+camada_convolucao1 = Conv2D(camada_convolucao1)
+camada_pooling1 = MaxPooling2D(camada_convolucao1)
+
+camada_convolucao2 = Conv2D(camada_pooling1)
+camada_convolucao2 = Conv2D(camada_convolucao2)
+camada_pooling2 = MaxPooling2D(camada_convolucao2)
+
+camada_convolucao3 = Conv2D(camada_pooling2)
+camada_convolucao3 = Conv2D(camada_convolucao3)
+camada_pooling3 = MaxPooling2D(camada_convolucao3)
+
+camada_convolucao4 = Conv2D(camada_pooling3)
+camada_convolucao4 = Conv2D(camada_convolucao4)
+camada_pooling4 = MaxPooling2D(camada_convolucao4)
+
+camada_convolucao5 = Conv2D(camada_pooling4)
+camada_convolucao5 = Conv2D(camada_convolucao5)
+camada_pooling5 = MaxPooling2D(camada_convolucao5)
+
+camada_planeada = Flatten(camada_pooling5)
+
+camada_densa1 = Dense(camada_planeada)
+camada_desativa_neuronios1 = Dropout(camada_densa1, porcentagem = 0.25)
+
+camada_densa2 = Dense(camada_desativa_neuronios1)
+camada_desativa_neuronios2 = Dropout(camada_densa2, porcentagem = 0.25)
+
+camada_densa3 = Dense(camada_densa2)
+
+modelo = Model(input=entrada, output=camada_densa3)
+modelo.executar_treino(otimizador=taxa_aprendizado, perca=funcao_perca)
                   </code>
                 </pre>
               </div>
