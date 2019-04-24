@@ -393,15 +393,15 @@
                   </tr>
                   <tr>
                     <td>(Imagens com nódulos e proporção 1:1) CNN </td>
-                    <td>1600</td>
+                    <td>3200</td>
                     <td>500</td>
-                    <td>70%</td>
+                    <td>74%</td>
                   </tr>
                   <tr>
                     <td>CNN balanceada e com data augmentation </td>
                     <td>11518</td>
                     <td>500</td>
-                    <td>79.5%</td>
+                    <td>78%</td>
                   </tr>
                 </tbody>
               </table>
@@ -638,10 +638,10 @@ modelo.executar_treino(otimizador=taxa_aprendizado, perca=funcao_perca)
                 <pre>
                   <code class="python" data-trim>
 #paramestros ajustaveis da rede
-epoca = 50
-quant_amostras_por_epoca = 5
+epoca = 500
+quant_amostras_por_epoca = 20
 funcao_perca = "binary_crossentropy"
-taxa_aprendizado = 1e-6
+taxa_aprendizado = 1e-5
 
 #definicao do modelo da rede
 entrada = Image(64x64)
@@ -672,11 +672,8 @@ camada_densa1 = Dense(camada_planeada)
 camada_desativa_neuronios1 = Dropout(camada_densa1, porcentagem = 0.25)
 
 camada_densa2 = Dense(camada_desativa_neuronios1)
-camada_desativa_neuronios2 = Dropout(camada_densa2, porcentagem = 0.25)
 
-camada_densa3 = Dense(camada_densa2)
-
-modelo = Model(input=entrada, output=camada_densa3)
+modelo = Model(input=entrada, output=camada_densa2)
 modelo.executar_treino(otimizador=taxa_aprendizado, perca=funcao_perca)
                   </code>
                 </pre>
